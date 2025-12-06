@@ -1,0 +1,28 @@
+/* src/pages/ArtistSongs.css */
+.as-wrap { max-width: 900px; margin: 24px auto; padding: 0 16px; font-family: system-ui, sans-serif; }
+.as-header { display:flex; flex-direction:column; gap:12px; margin-bottom:16px; }
+.as-controls { display:flex; flex-wrap:wrap; align-items:center; gap:12px; }
+.as-controls input { margin-left:6px; padding:6px 8px; border:1px solid #e5e7eb; border-radius:8px; }
+.as-controls button { padding:6px 12px; border-radius:8px; border:1px solid #e5e7eb; background:#f9fafb; cursor:pointer; }
+.as-controls button:disabled { opacity:.6; cursor:not-allowed; }
+.as-endpoint { color:#6b7280; font-size:.9rem; }
+.as-error { color:#991b1b; background:#fef2f2; border:1px solid #fecaca; padding:8px 10px; border-radius:8px; }
+
+.as-list { display:grid; gap:10px; list-style:none; padding:0; margin:0; }
+.as-item { display:flex; align-items:center; justify-content:space-between; padding:10px 12px; border:1px solid #e5e7eb; border-radius:10px; background:#fff; }
+.as-left { display:flex; gap:12px; align-items:center; }
+.as-cover { width:48px; height:48px; border-radius:8px; overflow:hidden; background:#f3f4f6; display:grid; place-items:center; }
+.as-cover img { width:100%; height:100%; object-fit:cover; }
+.as-cover-fallback { font-size:20px; color:#6b7280; }
+.as-meta { display:flex; flex-direction:column; }
+.as-title { font-weight:600; }
+.as-subtitle { color:#6b7280; font-size:.9rem; }
+
+.as-right { display:flex; gap:8px; align-items:center; }
+.as-pill { padding:4px 8px; border-radius:999px; border:1px solid #e5e7eb; background:#f9fafb; color:#374151; font-size:.85rem; }
+/* Forzar texto negro en las filas de canciones de estadísticas */
+.song-row,
+.song-row * {
+    color: #000 !important;
+}
+

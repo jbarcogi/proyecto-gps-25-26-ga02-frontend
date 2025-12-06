@@ -1,0 +1,517 @@
+#root {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+}
+
+.logo {
+    height: 6em;
+    padding: 1.5em;
+    will-change: filter;
+    transition: filter 300ms;
+}
+.logo:hover {
+    filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+    filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    a:nth-of-type(2) .logo {
+        animation: logo-spin infinite 20s linear;
+    }
+}
+
+.card {
+    padding: 2em;
+}
+
+.read-the-docs {
+    color: #888;
+}
+
+/* Añadir al final de App.css */
+.auth-bar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #e2e8f0;
+    padding: 12px 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+.auth-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #38a169;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background: #38a169;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+.welcome-message {
+    margin: 10px 0;
+    padding: 10px;
+    background: #f0fff4;
+    border: 1px solid #9ae6b4;
+    border-radius: 6px;
+    color: #22543d;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+/* Asegurar que el contenido no quede detrás de la barra fija */
+#root {
+    margin-top: 60px;
+}
+
+/* === Panel de estadísticas de discográfica === */
+
+.label-stats-container {
+    max-width: 960px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    color: #f9fafb;
+}
+
+.label-stats-title {
+    font-size: 1.9rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 0.25rem;
+}
+
+.label-stats-subtitle {
+    text-align: center;
+    color: #9ca3af;
+    margin-bottom: 1.5rem;
+}
+
+.label-stats-filters-card {
+    background: #111827;
+    border-radius: 1rem;
+    padding: 1.25rem 1.5rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.filters-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #22d3ee;
+    margin-bottom: 0.75rem;
+}
+
+.filters-row {
+    display: grid;
+    grid-template-columns: minmax(0, 2.3fr) repeat(3, minmax(0, 1fr));
+    gap: 0.75rem;
+    align-items: flex-end;
+}
+
+.filter-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.filter-item--wide {
+    min-width: 0;
+}
+
+.filter-item--button {
+    align-self: stretch;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.filter-label {
+    font-size: 0.85rem;
+    color: #d1d5db;
+}
+
+.filter-input {
+    width: 100%;
+    padding: 0.45rem 0.6rem;
+    border-radius: 0.5rem;
+    border: 1px solid #374151;
+    background: #020617;
+    color: #f9fafb;
+    font-size: 0.9rem;
+}
+
+.filter-input:focus {
+    outline: none;
+    border-color: #22d3ee;
+    box-shadow: 0 0 0 1px rgba(34, 211, 238, 0.3);
+}
+
+.filter-button {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.65rem;
+    border: none;
+    background: linear-gradient(135deg, #06b6d4, #0ea5e9);
+    color: white;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: transform 0.05s ease, box-shadow 0.05s ease, opacity 0.1s ease;
+}
+
+.filter-button:hover {
+    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.4);
+    transform: translateY(-1px);
+}
+
+.filter-button:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+.filter-button:disabled {
+    opacity: 0.6;
+    cursor: default;
+}
+
+/* Autocomplete */
+
+.autocomplete-wrapper {
+    position: relative;
+}
+
+.autocomplete-list {
+    position: absolute;
+    z-index: 10;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin-top: 0.15rem;
+    max-height: 220px;
+    overflow-y: auto;
+    background: #020617;
+    border-radius: 0.5rem;
+    border: 1px solid #111827;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+.autocomplete-item {
+    padding: 0.45rem 0.6rem;
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 0.35rem;
+    cursor: pointer;
+}
+
+.autocomplete-item:hover {
+    background: rgba(34, 211, 238, 0.15);
+}
+
+.autocomplete-item-name {
+    font-weight: 500;
+}
+
+.autocomplete-item-extra {
+    color: #9ca3af;
+    font-size: 0.8rem;
+}
+
+.filter-helper {
+    margin-top: 0.25rem;
+    font-size: 0.8rem;
+    color: #9ca3af;
+    word-break: break-all;
+}
+
+.filters-error {
+    margin-top: 0.75rem;
+    color: #f87171;
+    font-size: 0.9rem;
+}
+
+/* Resultados */
+
+.label-stats-results {
+    margin-top: 1.5rem;
+}
+
+.loading-text {
+    text-align: center;
+    color: #9ca3af;
+}
+
+.stats-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.9rem;
+}
+
+.stats-card {
+    background: #020617;
+    border-radius: 1rem;
+    padding: 0.9rem 1rem;
+    border: 1px solid #111827;
+}
+
+.stats-card h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+}
+
+.stats-main-number {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.15rem;
+}
+
+.stats-secondary {
+    font-size: 0.85rem;
+    color: #9ca3af;
+}
+/* === Panel estadísticas globales discográfica === */
+
+.label-stats-root {
+    max-width: 1100px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background: #111827;
+    border-radius: 1rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+    color: #e5e7eb;
+}
+
+.label-stats-header h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.25rem;
+}
+
+.label-stats-subtitle {
+    margin: 0;
+    color: #9ca3af;
+}
+
+.label-stats-timeframe {
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: #9ca3af;
+}
+
+.label-stats-message {
+    margin-top: 1.5rem;
+    padding: 0.75rem 1rem;
+    border-radius: 0.75rem;
+    background: rgba(55, 65, 81, 0.7);
+    font-size: 0.95rem;
+}
+
+.label-stats-message-error {
+    background: rgba(127, 29, 29, 0.9);
+    color: #fee2e2;
+}
+
+.label-stats-kpis {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.label-stats-kpi-card {
+    padding: 1rem 1.2rem;
+    border-radius: 0.9rem;
+    background: linear-gradient(135deg, #111827, #020617);
+    border: 1px solid rgba(156, 163, 175, 0.25);
+}
+
+.label-stats-kpi-card h2 {
+    margin: 0 0 0.4rem;
+    font-size: 0.95rem;
+    color: #9ca3af;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.kpi-main {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.kpi-sub {
+    margin-top: 0.25rem;
+    font-size: 0.85rem;
+    color: #9ca3af;
+}
+
+.label-stats-charts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+    margin-top: 2rem;
+}
+
+/* ensure chart cards inside the grid stretch to same height */
+.label-stats-charts-grid {
+    align-items: stretch;
+}
+
+.chart-card {
+    padding: 1rem 1.2rem;
+    border-radius: 0.9rem;
+    background: #020617;
+    border: 1px solid rgba(55, 65, 81, 0.8);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.chart-card {
+    padding: 1rem 1.2rem;
+    border-radius: 0.9rem;
+    background: #020617;
+    border: 1px solid rgba(55, 65, 81, 0.8);
+}
+
+.chart-card h2 {
+    margin: 0 0 0.25rem;
+    font-size: 1rem;
+    color: #22c55e; /* match green used in bars */
+    font-weight: 700;
+}
+
+.chart-description {
+    margin: 0 0 0.75rem;
+    font-size: 0.85rem;
+    color: #9ca3af;
+}
+
+.chart-empty {
+    font-size: 0.9rem;
+    color: #9ca3af;
+}
+
+.chart-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.chart-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1.7fr) minmax(0, 2fr) auto;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.55rem;
+}
+
+.chart-row-labels {
+    min-width: 0;
+}
+
+.chart-row-main {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.chart-row-sub {
+    display: block;
+    font-size: 0.75rem;
+    color: #9ca3af;
+}
+
+/* Estilo para mostrar el UUID junto al nombre del artista */
+.chart-row-uuid {
+    color: #6b7280; /* gris más oscuro */
+    margin-left: 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 400;
+}
+
+/* Artist detail card shown when clicking a row */
+.artist-detail-card {
+    margin-top: 0; /* bring it up to align with the left card */
+    /* rely on .chart-card for padding/background/border to match shape exactly */
+    display: block;
+}
+.artist-detail-image {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 6px;
+    background: #071027;
+    display: block;
+}
+.artist-detail-meta h3 {
+    margin: 0;
+}
+
+/* Rank badge for top list */
+.chart-row-rank {
+    color: #9ca3af;
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-right: 0.35rem;
+}
+
+.chart-row-bar {
+    width: 100%;
+    height: 0.6rem;
+    border-radius: 999px;
+    background: #111827;
+    overflow: hidden;
+}
+
+.chart-row-bar-fill {
+    height: 100%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #22c55e, #0ea5e9);
+    transition: width 0.4s ease-out;
+}
+
+.chart-row-value {
+    justify-self: flex-end;
+    font-size: 0.85rem;
+    font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 640px) {
+    .label-stats-root {
+        margin: 1rem;
+        padding: 1rem;
+    }
+
+    .chart-row {
+        grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.5fr) auto;
+    }
+}
