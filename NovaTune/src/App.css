@@ -3,6 +3,7 @@
     margin: 0 auto;
     padding: 2rem;
     text-align: center;
+    margin-top: 60px; /* Añade esta propiedad del segundo #root */
 }
 
 .logo {
@@ -89,10 +90,7 @@
     100% { opacity: 1; }
 }
 
-/* Asegurar que el contenido no quede detrás de la barra fija */
-#root {
-    margin-top: 60px;
-}
+/* Elimina el segundo #root que estaba aquí */
 
 /* === Panel de estadísticas de discográfica === */
 
