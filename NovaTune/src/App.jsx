@@ -22,7 +22,7 @@ function App() {
     const [currentRole, setCurrentRole] = useState(null)
 
     const getTokenFromURL = () => {
-        const urlParams = new URLSearchParams(window.location.search);
+        const urlParams = new URLSearchParams(globalThis.location.search);
         return urlParams.get("token");
     };
 
@@ -43,7 +43,6 @@ function App() {
                 const r = await getCurrentUserRole()
                 if (!cancelled) setCurrentRole(r)
             } catch (e) {
-                if (!cancelled) setCurrentRole(null)
                 if (!cancelled) setCurrentRole(null)
             }
         }
@@ -152,12 +151,12 @@ function App() {
             <ResetPasswordForm
                 token={resetToken}
                 onBack={() => {
-                    window.history.replaceState({}, document.title, window.location.pathname);
+                    globalThis.history.replaceState({}, document.title, globalThis.location.pathname);
                     setResetToken("");
                     setCurrentView("home");
                 }}
                 onSuccess={() => {
-                    window.history.replaceState({}, document.title, window.location.pathname);
+                    globalThis.history.replaceState({}, document.title, globalThis.location.pathname);
                     setResetToken("");
                     setCurrentView("login");
                 }}
