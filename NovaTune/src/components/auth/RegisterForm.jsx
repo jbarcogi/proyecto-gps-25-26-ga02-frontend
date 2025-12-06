@@ -16,54 +16,44 @@ const RegisterForm = ({ onBack }) => {
     const [showSuccess, setShowSuccess] = useState(false); // ← Controlar visibilidad del éxito
 
     // Validación en tiempo real
-    const validateField = (name, value) => {
-        const newErrors = { ...errors };
+const getFieldError = (name, value) => {
+    switch (name) {
+        case 'username':
+            if (!value.trim()) return 'El nombre de usuario es requerido';
+            if (value.length < 3) return 'Mínimo 3 caracteres';
+            return null;
+            
+        case 'email':
+            if (!value.trim()) return 'El email es requerido';
+            if (!/\S+@\S+\.\S+/.test(value)) return 'Formato de email inválido';
+            return null;
+            
+        case 'password':
+            if (!value) return 'La contraseña es requerida';
+            if (value.length < 8) return 'Mínimo 8 caracteres';
+            return null;
+            
+        case 'user_type':
+            if (!value) return 'El tipo de usuario es requerido';
+            return null;
+            
+        default:
+            return null;
+    }
+};
 
-        switch (name) {
-            case 'username':
-                if (!value.trim()) {
-                    newErrors.username = 'El nombre de usuario es requerido';
-                } else if (value.length < 3) {
-                    newErrors.username = 'Mínimo 3 caracteres';
-                } else {
-                    delete newErrors.username;
-                }
-                break;
-
-            case 'email':
-                if (!value.trim()) {
-                    newErrors.email = 'El email es requerido';
-                } else if (!/\S+@\S+\.\S+/.test(value)) {
-                    newErrors.email = 'Formato de email inválido';
-                } else {
-                    delete newErrors.email;
-                }
-                break;
-
-            case 'password':
-                if (!value) {
-                    newErrors.password = 'La contraseña es requerida';
-                } else if (value.length < 8) {
-                    newErrors.password = 'Mínimo 8 caracteres';
-                } else {
-                    delete newErrors.password;
-                }
-                break;
-
-            case 'user_type':
-                if (!value) {
-                    newErrors.user_type = 'El tipo de usuario es requerido';
-                } else {
-                    delete newErrors.user_type;
-                }
-                break;
-
-            default:
-                break;
-        }
-
-        setErrors(newErrors);
-    };
+const validateField = (name, value) => {
+    const newErrors = { ...errors };
+    const error = getFieldError(name, value);
+    
+    if (error) {
+        newErrors[name] = error;
+    } else {
+        delete newErrors[name];
+    }
+    
+    setErrors(newErrors);
+};
 
     const handleChange = (e) => {
         const { name, value } = e.target;
